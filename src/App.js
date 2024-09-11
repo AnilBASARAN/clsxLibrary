@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
+import './App.css';
+import {useState} from "react";
+import clsx from "clsx";
+
+
+const App = () => {
+
+  const [isDark,setIsDark] = useState(true);
+
+  const clickHandler=()=> setIsDark(!isDark);
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+  <div className={clsx(" h-screen flex items-center justify-center", isDark ? "bg-slate-100":"bg-slate-300")}>
+    <button className="border border-2 border-stone-400" onClick={clickHandler} >
+    <div className={clsx("w-6 h-8",isDark? "bg-slate-100":"bg-slate-400")} ></div>
+    <div className={clsx("w-6 h-8",isDark? "bg-slate-400":"bg-slate-100")} ></div>
+    </button>
+  </div>
+
+    
+
   );
-}
+};
 
 export default App;
